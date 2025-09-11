@@ -384,9 +384,11 @@
       }
       .heading {
         font-family: Flavellya;
-        position: absolute;
-        top: 30%;
-        left: 30%;
+        font-size: clamp(1.2rem, 5vw, 3rem);
+        text-align: center;
+        left: 50%;
+        top:50%;
+        transform: translateX(-50%);
         font-size: 50px;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       }
@@ -401,6 +403,11 @@
         transform: translateX(50%); /*scales with screen width */
           width: min(70%, 160px);
       }
+        .heading {
+          font-family: Flavellya;
+          font-size: 1.2rem; /* lock to smaller size */
+          top: 40%;
+        }
       }
       /* Footer */
       .footer {
@@ -864,6 +871,7 @@
     <script src="app.js"></script>
   </body>
 </html>
+
 
 
 
