@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimePrint Studios | Premium Printing & Photography</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="first.css" />
+    <style>
+      footer.footer {
+        background: rgba(1, 1, 58, 0.85);
+      }
+      .footer-links ul {
+        list-style: none;
+      }
+      .footer-logo i {
+        margin-right: 10px;
+        color: var(--primary-color);
+      }
+      .services-section h2 {
+        text-align: center;
+        padding-bottom: 60px;
+      }
+      .gallery-section h2 {
+        text-align: center;
+        padding-bottom: 60px;
+      }
+
+      /*-----------------Homepage Carousel section---------------*/
+
+      /* Search Form with Animation */
+
+      .search-container {
+        position: relative;
+        width: 300px;
+        transform-origin: right center;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .search-container.focused {
+        transform: scale(1.05);
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 30px;
+        border: 1px solid var(--navy-blue);
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--navy-blue);
+        padding-right: 50px;
+        transition: all 0.5s ease;
+        transform-origin: right center;
+      }
+
+      .search-input::placeholder {
+        color: rgba(0, 0, 128, 0.7);
+        transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 0 3px rgba(182, 95, 207, 0.3);
+      }
+
+      .search-input:focus::placeholder {
+        transform: translateX(10px);
+        opacity: 0;
+      }
+
+      .search-btn {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--navy-blue);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .search-btn:hover {
+        transform: translateY(-50%) scale(1.2);
+        color: var(--primary-color);
+      }
+
+      .carousel {
+        width: 100%;
+        height: 110vh;
+        overflow: hidden;
+        margin-top: -50px;
+        position: relative;
+      }
+
+      .carousel .list .item {
+        position: absolute;
+        inset: 0 0 0 0;
+      }
+      .carousel .list .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .carousel .list .item .content {
+        position: absolute;
+        top: 30%;
+        width: 1160px;
+        max-width: 80%;
+        left: 50%;
+        transform: translate(-50%);
+        color: #fff;
+        text-shadow: 0 5px 18px #0004;
+      }
+      .carousel .list .item .content .author {
+        font-weight: bold;
+        letter-spacing: 10px;
+      }
+      .carousel .list .item .content .title,
+      .carousel .list .item .content .topic {
+        font-weight: bold;
+        font-size: 3em;
+        list-style: 1.3em;
+      }
+      .carousel .list .item .content .topic {
+        color: #ff0fff;
+      }
+
+      .carousel .list .item .content .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 130px);
+        grid-template-rows: 40px;
+        gap: 5px;
+        padding: 10px 0;
+      }
+      .carousel .list .item .content .des {
+        font-size: 20px;
+      }
+      .carousel .list .item .content button {
+        border: none;
+        background-color: #eee;
+        letter-spacing: 3px;
+        font-family: Poppins;
+        font-weight: 500;
+        cursor: pointer;
+        margin-right: 15px;
+      }
+      .carousel .list .item .content button:nth-child(2) {
+        background: transparent;
+        color: #eee;
+        border: 1px solid#eee;
+        transition: 0.8s;
+      }
+      .carousel .list .item .content button:hover {
+        background-color: #ff0fff;
+        color: #000;
+      }
+
+      /*----------------thumbnail--------*/
+      .thumbnail {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        width: max-content;
+        z-index: 100;
+        display: flex;
+        gap: 20px;
+      }
+      .thumbnail .item {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .thumbnail .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #fff;
+      }
+      .thumbnail .item .content {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        text-align: center;
+        color: #ff0fff;
+      }
+      .thumbnail .item .content .title {
+        font-weight: bold;
+        color: #ff0fff;
+      }
+      /*------------Arrows------*/
+      .arrows {
+        position: absolute;
+        top: 85%;
+        right: 52%;
+        width: 300px;
+        max-width: 30%;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .arrows button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #eee4;
+        border: none;
+        font-family: monospace;
+        color: #fff;
+        font-weight: bold;
+        font-size: large;
+        transition: 0.5s;
+        z-index: 100;
+      }
+      .arrows button:hover {
+        background-color: #eee;
+        color: #555;
+      }
+
+      .carousel .list .item:nth-child(1) {
+        z-index: 1;
+      }
+      .carousel .list .item:nth-child(1) .author,
+      .carousel .list .item:nth-child(1) .title,
+      .carousel .list .item:nth-child(1) .topic,
+      .carousel .list .item:nth-child(1) .des,
+      .carousel .list .item:nth-child(1) .buttons {
+        transform: translateY(50px);
+        filter: blur(20px);
+        opacity: 0;
+        animation: showContent 0.5s 1s linear 1 forwards;
+      }
+      @keyframes showContent {
+        to {
+          opacity: 1;
+          filter: blur(0);
+          transform: translateY(0);
+        }
+      }
+      .carousel .list .item:nth-child(1) .title {
+        animation-delay: 1.2s;
+      }
+      .carousel .list .item:nth-child(1) .topic {
+        animation-delay: 1.4s;
+      }
+      .carousel .list .item:nth-child(1) .des {
+        animation-delay: 1.6s;
+      }
+      .carousel .list .item:nth-child(1) .buttons {
+        animation-delay: 1.8s;
+      }
+      .carousel .list .item:nth-child(1) img {
+        width: 150px;
+        height: 220px;
+        position: absolute;
+        left: 50%;
+        bottom: 50px;
+        border-radius: 20px;
+        animation: showImage 0.5s linear 1 forwards;
+      }
+      @keyframes showImage {
+        to {
+          width: 100%;
+          height: 100%;
+          left: 0;
+          bottom: 0;
+          border-radius: 0;
+        }
+      }
+      .carousel .thumbnail .item:nth-last-child(1) {
+        width: 0;
+        overflow: hidden;
+        animation: showThumbnail 0.5s linear 1 forwards;
+      }
+      @keyframes showThumbnail {
+        to {
+          width: 150px;
+        }
+      }
+      .carousel .thumbnail {
+        transform: translateX(150px);
+        animation: transformThumbnail 0.5s linear 1 forwards;
+      }
+      @keyframes transformThumbnail {
+        to {
+          transform: translateX(0px);
+        }
+      }
+      /*--------prev------*/
+      .carousel.prev .list .item:nth-child(2) {
+        z-index: 2;
+      }
+      .carousel.prev .list .item:nth-child(1) img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: outImage 0.5s linear 1 forwards;
+      }
+      @keyframes outImage {
+        to {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          left: 50%;
+          bottom: 50px;
+        }
+      }
+      .carousel.prev .thumbnail .item:nth-child(1) {
+        width: 0;
+        overflow: hidden;
+        opacity: 0;
+        animation: showThumbnail 0.5s linear forwards;
+      }
+      .carousel.prev .list .item:nth-child(1) .author,
+      .carousel.prev .list .item:nth-child(1) .title,
+      .carousel.prev .list .item:nth-child(1) .topic,
+      .carousel.prev .list .item:nth-child(1) .des,
+      .carousel.prev .list .item:nth-child(1) .buttons {
+        animation: contentOut 1.5s linear 1 forwards;
+      }
+      @keyframes contentOut {
+        to {
+          transform: translateY(-150px);
+          filter: blur(20px);
+          opacity: 0;
+        }
+      }
+
+      .carousel.next .arrows button,
+      .carousel.prev .arrows button {
+        pointer-events: none;
+      }
+      .time {
+        width: 100%;
+        height: 5px;
+        background-color: #ff0fff;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+      }
+
+      .time.running {
+        animation: timeRunning 2s linear forwards;
+      }
+      .dark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+        z-index: 0; /* make sure it's on top of background, but under content */
+      }
+
+      @keyframes timeRunning {
+        from {
+          width: 100%;
+        }
+        to {
+          width: 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <img
+          src="images/Screenshot 2025-08-23 222255.png"
+          alt=""
+          width="70px"
+          height="35px"
+        />
+        <div class="logoo"><b>PRINT HUB U.G</b></div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars text-navy-blue"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="search-container ms-md-3">
+            <form id="searchForm" class="d-flex">
+              <input
+                class="search-input"
+                type="search"
+                placeholder="Search services..."
+                aria-label="Search"
+              />
+              <button class="search-btn" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <div class="container-fluid">
+        <div class="carousel">
+          <div class="time"></div>
+          <!-------list items----->
+          <div class="list">
+            <div class="item">
+              <img src="images/print1.jpeg" />
+
+              <div class="dark-overlay"></div>
+              <div class="content">
+                <div class="author">Large printing</div>
+                <div class="title">Premium</div>
+                <div class="topic">Large Format</div>
+                <div class="des">
+                  We produce high-resolution large prints perfect for
+                  banners,<br />
+                  signage, and backdrops. Ideal for indoor and outdoor displays,
+                  our<br />
+                  prints are durable and attention-grabbing.
+                </div>
+                <div class="buttons">
+                  <button>See more</button>
+                  <button>See more</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <img src="images/print2.jpeg" />
+
+              <div class="dark-overlay"></div>
+              <div class="content">
+                <div class="author">Custom printing</div>
+                <div class="title">Mug &</div>
+                <div class="topic">T-shirt Printing</div>
+                <div class="des">
+                  We produce high-resolution large prints perfect for
+                  banners,<br />
+                  signage, and backdrops. Ideal for indoor and outdoor displays,
+                  our<br />
+                  prints are durable and attention-grabbing.
+                </div>
+                <div class="buttons">
+                  <button>See more</button>
+                  <button>See more</button>
+                </div>
+              </div>
+            </div>
+
+            <!-------list items----->
+
+            <div class="item">
+              <img src="images/print3.avif" />
+
+              <div class="dark-overlay"></div>
+              <div class="content">
+                <div class="author">Posters & Flyers</div>
+                <div class="title">Matt,Glossy and</div>
+                <div class="topic">Canvas</div>
+                <div class="des">
+                  We produce high-resolution large prints perfect for
+                  banners,<br />
+                  signage, and backdrops. Ideal for indoor and outdoor displays,
+                  our<br />
+                  prints are durable and attention-grabbing.
+                </div>
+                <div class="buttons">
+                  <button>See more</button>
+                  <button>See more</button>
+                </div>
+              </div>
+            </div>
+
+            <!-------list items----->
+            <div class="item">
+              <img src="images/print4.webp" />
+
+              <div class="dark-overlay"></div>
+              <div class="content">
+                <div class="author">Stickers and Pull-up</div>
+                <div class="title">Plastic</div>
+                <div class="topic">I.D printing</div>
+                <div class="des">
+                  We produce high-resolution large prints perfect for
+                  banners,<br />
+                  signage, and backdrops. Ideal for indoor and outdoor displays,
+                  our<br />
+                  prints are durable and attention-grabbing.<br />
+                </div>
+                <div class="buttons">
+                  <button>See more</button>
+                  <button>See more</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-------thumbnail----->
+          <div class="thumbnail">
+            <div class="item" data-index="0">
+              <img src="images/print2.jpeg" />
+
+              <div class="content">
+                <div class="title"></div>
+                <div class="des"></div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="images/print3.avif" />
+              <div class="content">
+                <div class="title"></div>
+                <div class="des"></div>
+              </div>
+            </div>
+            <div class="item" data-index="0">
+              <img src="images/print4.webp" />
+              <div class="content">
+                <div class="title"></div>
+                <div class="des"></div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="images/print1.jpeg" />
+              <div class="content">
+                <div class="title"></div>
+                <div class="des"></div>
+              </div>
+            </div>
+          </div>
+          <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up" data-aos-duration="1000">
+          <h2>Our Services</h2>
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Large Format Printing"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-print"></i>
+                </div>
+                <h3>Large Format Printing</h3>
+                <p>
+                  High-quality prints on banners, stickers, pull-up stands, and
+                  more for all your advertising needs.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Photo Printing"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-images"></i>
+                </div>
+                <h3>Custom Photo Printing</h3>
+                <p>
+                  Premium photo prints on matte, glossy, and canvas finishes to
+                  preserve your precious memories.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Promotional Items"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Promotional Items</h3>
+                <p>
+                  Custom printing on mugs, T-shirts, ID cards, and other
+                  promotional merchandise.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Posters & Fliers"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-newspaper"></i>
+                </div>
+                <h3>Posters & Fliers</h3>
+                <p>
+                  Eye-catching designs for events, promotions, and announcements
+                  in various sizes and finishes.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Professional Photography"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <h3>Professional Photography</h3>
+                <p>
+                  High-quality photography services for portraits, events,
+                  products, and commercial needs.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            <div class="service-card">
+              <div class="service-img">
+                <img
+                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Plotting Services"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-icon">
+                  <i class="fas fa-ruler-combined"></i>
+                </div>
+                <h3>Plotting Services</h3>
+                <p>
+                  Precision plotting for architectural designs, engineering
+                  drawings, and large-scale artworks.
+                </p>
+                <a href="#contact" class="btn btn-outline-primary">Get Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+            <div class="about-img floating">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Our Team"
+              />
+            </div>
+          </div>
+          <div
+            class="col-lg-6"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <div class="about-content">
+              <h2>About PrintHub U.G</h2>
+              <p>
+                Founded in 2010, PrintHub U.G has grown to become a leader in
+                premium printing and photography services. Our commitment to
+                quality and customer satisfaction has earned us a reputation for
+                excellence in the industry.
+              </p>
+              <p>
+                We combine state-of-the-art technology with creative expertise
+                to deliver outstanding results for both personal and commercial
+                projects. Our team of professionals is dedicated to bringing
+                your ideas to life with precision and artistry.
+              </p>
+              <div class="about-features">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                  <div class="feature-text">
+                    <h4>Quality Assurance</h4>
+                    <p>
+                      We use only the highest quality materials and latest
+                      printing technologies.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="feature-text">
+                    <h4>Fast Turnaround</h4>
+                    <p>
+                      Efficient processes ensure your projects are completed on
+                      time, every time.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                  </div>
+                  <div class="feature-text">
+                    <h4>Expert Support</h4>
+                    <p>
+                      Our knowledgeable team is always ready to assist with your
+                      printing needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up" data-aos-duration="1000">
+          <h2>Our Work</h2>
+        </div>
+        <div
+          class="gallery-filter"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="printing">Printing</button>
+          <button class="filter-btn" data-filter="photography">
+            Photography
+          </button>
+          <button class="filter-btn" data-filter="promotional">
+            Promotional
+          </button>
+          <button class="filter-btn" data-filter="large-format">
+            Large Format
+          </button>
+        </div>
+        <div class="gallery-grid">
+          <div
+            class="gallery-item"
+            data-category="printing"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
+            <img src="images/busy.jpg" alt="Business Cards" />
+            <div class="gallery-overlay">
+              <h4>Business Cards</h4>
+              <p>Premium card stock with various finishes</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="photography"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Portrait Photography"
+            />
+            <div class="gallery-overlay">
+              <h4>Portrait Session</h4>
+              <p>Professional studio lighting</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="photography"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Portrait Photography"
+            />
+            <div class="gallery-overlay">
+              <h4>Portrait Session</h4>
+              <p>Professional studio lighting</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="large-format"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <img src="images/prin.jpg" alt="Banner Printing" />
+            <div class="gallery-overlay">
+              <h4>Vinyl Banners</h4>
+              <p>Weather-resistant outdoor signage</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="promotional"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
+            <img src="images/cup.jpg" alt="Mug Printing" />
+            <div class="gallery-overlay">
+              <h4>Custom Mugs</h4>
+              <p>Full-color sublimation printing</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="printing"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img src="images/large.jpg" alt="Poster Printing" />
+            <div class="gallery-overlay">
+              <h4>Event Posters</h4>
+              <p>Vibrant colors on premium paper</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="printing"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img src="images/large.jpg" alt="Poster Printing" />
+            <div class="gallery-overlay">
+              <h4>Event Posters</h4>
+              <p>Vibrant colors on premium paper</p>
+            </div>
+          </div>
+
+          <div
+            class="gallery-item"
+            data-category="photography"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Product Photography"
+            />
+            <div class="gallery-overlay">
+              <h4>Product Shoot</h4>
+              <p>Commercial photography for e-commerce</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="promotional"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="T-Shirt Printing"
+            />
+            <div class="gallery-overlay">
+              <h4>Custom T-Shirts</h4>
+              <p>Direct-to-garment printing</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="promotional"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="T-Shirt Printing"
+            />
+            <div class="gallery-overlay">
+              <h4>Custom T-Shirts</h4>
+              <p>Direct-to-garment printing</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="large-format"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Pull-Up Banner"
+            />
+            <div class="gallery-overlay">
+              <h4>Pull-Up Stands</h4>
+              <p>Portable exhibition displays</p>
+            </div>
+          </div>
+          <div
+            class="gallery-item"
+            data-category="large-format"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <img src="images/vid.jpg" alt="videography" />
+            <div class="gallery-overlay">
+              <h4>videography</h4>
+              <p>Visual storytelling at its finest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1000">
+            <div class="footer-about">
+              <div class="footer-logo">
+                <i class="fas fa-camera-retro"></i>
+                Print Hub U.G
+              </div>
+              <p>
+                Your trusted partner for premium printing and photography
+                services. We deliver quality, creativity, and exceptional
+                customer service.
+              </p>
+              <div class="social-links">
+                <a href="photoprint_hub" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="photohub2017" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="0782081003" class="social-link"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+                <a href="0701681845" class="social-link"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-2 col-md-4"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="home - Copy.html">Home</a></li>
+                <li><a href="services - Copy.html">Services</a></li>
+                <li><a href="about - Copy.html">About Us</a></li>
+                <li><a href="gallery - Copy.html">Gallery</a></li>
+                <li><a href="contact - Copy.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-4"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <div class="footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li><a href="#">Large Format Printing</a></li>
+                <li><a href="#">Photo Printing</a></li>
+                <li><a href="#">Promotional Items</a></li>
+                <li><a href="#">Professional Photography</a></li>
+                <li><a href="#">Plotting Services</a></li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-4"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
+            <div class="footer-links">
+              <h4>Contact Info</h4>
+              <ul>
+                <li>
+                  <i class="fas fa-map-marker-alt me-2"></i> Wilson Road,
+                  <br />Jesco Plaza, <br />level 2, <br />Shop No CD.06 <br />
+                  Kampala Uganda.
+                </li>
+                <li><i class="fas fa-phone-alt me-2"></i> 0782081003</li>
+                <li><i class="fas fa-envelope me-2"></i> Shakabrian2017.com</li>
+                <li>
+                  <i class="fas fa-clock me-2"></i> Mon-Fri: 8am-6pm <br />
+                  Saturday: 10am - 5pm
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="footer-bottom">
+          <p>&copy; 2025 Print Hub U.G. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        once: true,
+        duration: 1000,
+        easing: "ease-in-out",
+      });
+
+      // Preloader
+      window.addEventListener("load", function () {
+        const preloader = document.querySelector(".preloader");
+        preloader.classList.add("fade-out");
+        setTimeout(() => {
+          preloader.style.display = "none";
+        }, 500);
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        const scrollTop = document.querySelector(".scroll-top");
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+
+        if (window.scrollY > 300) {
+          scrollTop.classList.add("active");
+        } else {
+          scrollTop.classList.remove("active");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+
+          // Close mobile menu when clicking a link
+          const navbarCollapse = document.querySelector(".navbar-collapse");
+          if (navbarCollapse.classList.contains("show")) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
+          }
+        });
+      });
+
+      // Scroll to top button
+      document
+        .querySelector(".scroll-top")
+        .addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+      // Search form focus effect
+      const searchContainer = document.querySelector(".search-container");
+      const searchInput = document.querySelector(".search-input");
+
+      searchInput.addEventListener("focus", function () {
+        searchContainer.classList.add("focused");
+      });
+
+      searchInput.addEventListener("blur", function () {
+        searchContainer.classList.remove("focused");
+      });
+
+      // Search form submission
+      const searchForm = document.getElementById("searchForm");
+      searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm) {
+          // Create a nice notification for the search
+          const notification = document.createElement("div");
+          notification.style.position = "fixed";
+          notification.style.bottom = "30px";
+          notification.style.left = "50%";
+          notification.style.transform = "translateX(-50%)";
+          notification.style.backgroundColor = "var(--primary-color)";
+          notification.style.color = "white";
+          notification.style.padding = "15px 30px";
+          notification.style.borderRadius = "50px";
+          notification.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.2)";
+          notification.style.zIndex = "9999";
+          notification.style.transition = "all 0.5s ease";
+          notification.style.opacity = "0";
+          notification.style.transform = "translateX(-50%) translateY(20px)";
+          notification.textContent = `Searching for: ${searchTerm}`;
+
+          document.body.appendChild(notification);
+
+          // Trigger reflow
+          void notification.offsetWidth;
+
+          // Animate in
+          notification.style.opacity = "1";
+          notification.style.transform = "translateX(-50%) translateY(0)";
+
+          // Animate out after delay
+          setTimeout(() => {
+            notification.style.opacity = "0";
+            notification.style.transform = "translateX(-50%) translateY(-20px)";
+            setTimeout(() => {
+              document.body.removeChild(notification);
+            }, 500);
+          }, 3000);
+
+          // In a real implementation, you would redirect to search results or make an AJAX call
+          searchInput.value = "";
+        }
+      });
+
+      // Gallery filtering
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+
+          galleryItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+              // Re-trigger AOS animation
+              item.setAttribute("data-aos", "zoom-in");
+              AOS.refreshHard();
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Hover effect for service cards
+      const serviceCards = document.querySelectorAll(".service-card");
+      serviceCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-15px)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(-10px)";
+        });
+      });
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
